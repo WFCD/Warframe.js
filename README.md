@@ -6,13 +6,13 @@ A JavaScript API Wrapper for Warframe's WorldState Data
 You can simply add the JS file to your HTML by using the CDN Link or by adding `app.js` to your project:
 
 #### CDN:
-``html
+``
 <script src="https://cdn.rawgit.com/lucakiebel/Warframe.js/3e0bab27/app.js"></script>
 ``
 
 #### From your Project:
 
-``html
+``
 <script src="app.js"></script>
 ``
 
