@@ -1,7 +1,6 @@
 <html>
 <head>
     <title>WF-API Tests</title>
-    <link rel="icon" href="https://avatars3.githubusercontent.com/u/24436369?s=8000&v=4" title="WFCD">
 </head>
 <body>
     <select name="case" id="caseSelect">
@@ -28,7 +27,7 @@
 
         let options = {platform: getParameterByName("platform") || "pc"};
 
-        const WF = new WarframeAPI(options);
+        const WF = new Warframe(options);
 
         function changeCase(e) {
             let value = e.target.value;

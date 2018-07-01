@@ -1,8 +1,10 @@
 /**
- * Warframe API by Bleurque, Inc.
+ * Warframe.js by Bleurque, Inc.
+ *
+ * Docs and more: https://github.com/lucakiebel/Warframe.js
  */
 
-let WarframeAPI = class {
+let Warframe = class {
 
     /**
      *
