@@ -17,17 +17,17 @@ You can simply add the JS file to your HTML by using the CDN Link or by adding `
 
 After loading in the Script initialize the `Warframe` class, like so:
 
-``javascript
+```javascript
 const WF = new Warframe(options);
-``
+```
 
 Where `options` is an Object with the following structure:
 
-``javascript
+```javascript
 options = {
     platform: "pc"||"ps4"||"xb1"
 }
-``
+```
 
 Once initalized, you can use the newly created `WF` Object to access the getters, here is a table of those:
 
@@ -52,8 +52,9 @@ Once initalized, you can use the newly created `WF` Object to access the getters
 
 Example:
 
-``javascript
-let options = {platform: getParameterByName("platform") || "pc"};
+```javascript
+
+let options = {platform: "pc"};
 
 const WF = new Warframe(options);
 
@@ -61,4 +62,5 @@ async function(){
     let alerts = await WF.alerts;
     console.log(alerts);
 }();
-``
+
+```
