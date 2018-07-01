@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>WF-API Tests</title>
+    <link rel="icon" href="https://avatars3.githubusercontent.com/u/24436369?s=8000&v=4" title="WFCD">
+</head>
+<body>
+    <select name="case" id="caseSelect">
+        <option disabled selected value style="display: none">Select One</option>
+        <option value="alerts">Alerts</option>
+        <option value="sorties">Sorties</option>
+        <option value="circleCetus">Cetus</option>
+        <option value="circleEarth">Earth</option>
+        <option value="voidTrader">Void Trader</option>
+        <option value="news">News</option>
+        <option value="syndicateMissions">Syndicate Missions</option>
+        <option value="fissures">Fissure Missions</option>
+        <option value="invasions">Invasions</option>
+        <option value="dailyDeals">Daily Deals</option>
+        <option value="simaris">Simaris</option>
+        <option value="conclaveChallenges">Conclave Challenges</option>
+    </select>
+    <div id="test">
+
+    </div>
+    <script src="../app.js"></script>
+    <script>
+        document.querySelector("#caseSelect").addEventListener("change", changeCase);
+
+        let options = {platform: getParameterByName("platform") || "pc"};
+
+        const WF = new WarframeAPI(options);
+
+        function changeCase(e) {
+            let value = e.target.value;
+            !!value && WF[value].then(d => {console.log(d); document.querySelector("#test").innerText = JSON.stringify(d)});
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+    </script>
+</body>
+</html>
