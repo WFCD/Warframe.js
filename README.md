@@ -48,3 +48,17 @@ Once initalized, you can use the newly created `WF` Object to access the getters
 | Warframe.prototype.sorties            | The daily Sorties, Nodes and Conditions                  | Promise      |
 | Warframe.prototype.syndicateMissions  | Current Missions of the Syndicates + Cetus Syndicates    | Promise      |
 | Warframe.prototype.voidTrader         | When and where Baro will come, and what he carries       | Promise      |
+
+
+Example:
+
+``javascript
+let options = {platform: getParameterByName("platform") || "pc"};
+
+const WF = new Warframe(options);
+
+async function(){
+    let alerts = await WF.alerts;
+    console.log(alerts);
+}();
+``
