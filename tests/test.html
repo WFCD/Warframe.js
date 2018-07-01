@@ -3,6 +3,7 @@
     <title>WF-API Tests</title>
 </head>
 <body>
+    <p>Choose one of the following Datasets to see a sample of what the API can do!</p>
     <select name="case" id="caseSelect">
         <option disabled selected value style="display: none">Select One</option>
         <option value="alerts">Alerts</option>
@@ -21,7 +22,7 @@
     <div id="test">
 
     </div>
-    <script src="../app.js"></script>
+    <script src="https://cdn.rawgit.com/lucakiebel/Warframe.js/755346d0/app.js"></script>
     <script>
         document.querySelector("#caseSelect").addEventListener("change", changeCase);
 
