@@ -28,7 +28,7 @@ module.exports = class {
      */
     get heartbeat() {
         return new Promise((resolve, reject) => {
-            request("https://api.warframestat.us/heartdeat").then(data => resolve(data)).catch(err => reject(err));
+            request("https://api.warframestat.us/heartbeat").then(data => resolve(data)).catch(err => reject(err));
         })
     }
 
