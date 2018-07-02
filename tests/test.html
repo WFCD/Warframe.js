@@ -22,13 +22,17 @@
     <div id="test">
 
     </div>
-    <script src="../app.js"></script>
+    <script src="https://git.sk-cdn.net/lucakiebel/Warframe.js/master/app.js"></script>
     <script>
         document.querySelector("#caseSelect").addEventListener("change", changeCase);
 
         let options = {platform: getParameterByName("platform") || "pc"};
 
         const WF = new Warframe(options);
+
+        (async function () {
+            document.querySelector("#test").innerText = await WF.heartbeat === "Success" ? "API is reachable" : "API is not reachable";
+        })();
 
         function changeCase(e) {
             let value = e.target.value;
