@@ -50,8 +50,8 @@ Once initalized, you can use the newly created `WF` Object to access the getters
 | Name                                  | Description                                              | Return Value      |
 |---------------------------------------|----------------------------------------------------------|-------------------|
 | Warframe.prototype.alerts             | The alerts and all data associated with them             | Promise           |
-| Warframe.prototype.circleCetus        | Current Day- or Nighttime on Cetus                       | Promise           |
-| Warframe.prototype.circleEarth        | Current Day- or Nighttime on Earth                       | Promise           |
+| Warframe.prototype.cycleCetus         | Current Day- or Nighttime on Cetus                       | Promise           |
+| Warframe.prototype.cycleEarth         | Current Day- or Nighttime on Earth                       | Promise           |
 | Warframe.prototype.conclaveChallenges | The active Conclave Challenges                           | Promise           |
 | Warframe.prototype.dailyDeals         | Darvo's "Daily Deals"                                    | Promise           |
 | Warframe.prototype.darkSectors        | The Dark Sectors and what Alliance/Clan has it           | Promise           |

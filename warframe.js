@@ -8,7 +8,7 @@ const request = require("request-promise");
 
 /**
  * Warframe Class
- * @type {{new(Object): {voidTrader: Promise, events: Promise, syndicateMissions, circleEarth: Promise, sorties: Promise, darkSectors, fissures, circleCetus: Promise, invasions, dailyDeals, heartbeat: Promise, news: Promise, alerts: Promise, conclaveChallenges, simaris}}}
+ * @type {{new(Object): {voidTrader: Promise, events: Promise, syndicateMissions, cycleEarth: Promise, sorties: Promise, darkSectors, fissures, cyleCetus: Promise, invasions, dailyDeals, heartbeat: Promise, news: Promise, alerts: Promise, conclaveChallenges, simaris}}}
  */
 module.exports = class {
 
@@ -105,7 +105,7 @@ module.exports = class {
      * The current day/nighttime on cetus
      * @returns {Promise}
      */
-    get circleCetus() {
+    get cycleCetus() {
         return new Promise((resolve, reject) => {
             request(`${this.endpoint}/cetusCycle`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(circle => {
                 resolve({
@@ -122,7 +122,7 @@ module.exports = class {
      * The current day/nighttime on earth
      * @returns {Promise}
      */
-    get circleEarth() {
+    get cycleEarth() {
         return new Promise((resolve, reject) => {
             request(`${this.endpoint}/earthCycle`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(circle => {
                 let dn = circle.isDay ? "Day" : "Night";
@@ -130,7 +130,7 @@ module.exports = class {
                     state: dn.toLowerCase(),
                     until: new Date(circle.expiry),
                     timeLeft: circle.timeLeft,
-                    "string": `${circle.timeLeft} to ${dn}`
+                    "string": `${circle.timeLeft.replace(/ \d{1,2}s/gmi, "")} to ${dn}`
                 })
             }).catch(e => reject(e));
         });

@@ -105,7 +105,7 @@ let Warframe = class {
      * The current day/nighttime on cetus
      * @returns {Promise}
      */
-    get circleCetus() {
+    get cycleCetus() {
         return new Promise((resolve, reject) => {
             fetch(`${this.endpoint}/cetusCycle`).then(r => r.json()).then(circle => {
                 resolve({
@@ -122,7 +122,7 @@ let Warframe = class {
      * The current day/nighttime on earth
      * @returns {Promise}
      */
-    get circleEarth() {
+    get cycleEarth() {
         return new Promise((resolve, reject) => {
             fetch(`${this.endpoint}/earthCycle`).then(r => r.json()).then(circle => {
                 let dn = circle.isDay ? "Day" : "Night";
@@ -130,7 +130,7 @@ let Warframe = class {
                     state: dn.toLowerCase(),
                     until: new Date(circle.expiry),
                     timeLeft: circle.timeLeft,
-                    "string": `${circle.timeLeft} to ${dn}`
+                    "string": `${circle.timeLeft.replace(/ \d{1,2}s/gmi, "")} to ${dn}`
                 })
             }).catch(e => reject(e));
         });
