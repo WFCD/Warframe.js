@@ -1,0 +1,27 @@
+{
+  "name": "warframe.js",
+  "version": "1.0.0",
+  "description": "A JavaScript API Wrapper for Warframes WorldState Data",
+  "main": "app.node.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucakiebel/Warframe.js.git"
+  },
+  "keywords": [
+    "Warframe",
+    "API",
+    "Promise"
+  ],
+  "author": "Luca Kiebel <opensource@luca-kiebel.de> (https://luca.lk)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucakiebel/Warframe.js/issues"
+  },
+  "homepage": "https://github.com/lucakiebel/Warframe.js#readme"
+}
