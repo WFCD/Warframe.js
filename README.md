@@ -92,4 +92,4 @@ const WF = new Warframe(options);
 })();
 ```
 
-To see this in action head over to https://lucakiebel.github.io/Warframe.js/tests/test.html
+To see this in action head over to [tests/test.html](https://lucakiebel.github.io/Warframe.js/tests/test.html)
