@@ -1,10 +1,16 @@
 /**
- * Warframe.js by Bleurque, Inc.
+ * Warframe.js by Luca Kiebel
  *
  * Docs and more: https://github.com/lucakiebel/Warframe.js
  */
 
-let Warframe = class {
+const request = require("request-promise");
+
+/**
+ * Warframe Class
+ * @type {{new(Object): {voidTrader: Promise, events: Promise, syndicateMissions, circleEarth: Promise, sorties: Promise, darkSectors, fissures, circleCetus: Promise, invasions, dailyDeals, heartbeat: Promise, news: Promise, alerts: Promise, conclaveChallenges, simaris}}}
+ */
+module.exports = class {
 
     /**
      *
@@ -12,8 +18,18 @@ let Warframe = class {
      */
     constructor(options) {
         if (options.platform) this.platform = options.platform;
-        else throw new Error("Platform must be set in options");
-        this.apiURL = `https://api.warframestat.us/${this.platform}`;
+        else throw ("Platform must be set in options");
+        this.endpoint = `https://api.warframestat.us/${this.platform}`;
+    }
+
+	/**
+	 * Test whether the API can be reached
+     * @returns {Promise}
+     */
+    get heartbeat() {
+        return new Promise((resolve, reject) => {
+            request("https://api.warframestat.us/heartdeat").then(data => resolve(data)).catch(err => reject(err));
+        })
     }
 
     /**
@@ -22,7 +38,7 @@ let Warframe = class {
      */
     get alerts() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/alerts`).then(r => r.json()).then(json => {
+            request(`${this.endpoint}/alerts`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(json => {
                 let alerts = json;
                 alerts = alerts.map(alert => {
                     return {
@@ -62,7 +78,7 @@ let Warframe = class {
      */
     get sorties() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/sortie`).then(r => r.json()).then(sorties => {
+            request(`${this.endpoint}/sortie`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(sorties => {
                 resolve({
                     id:sorties.id,
                     since: new Date(sorties.activation),
@@ -91,7 +107,7 @@ let Warframe = class {
      */
     get circleCetus() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/cetusCycle`).then(r => r.json()).then(circle => {
+            request(`${this.endpoint}/cetusCycle`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(circle => {
                 resolve({
                     state: circle.isDay ? "day" : "night",
                     until: new Date(circle.expiry),
@@ -108,7 +124,7 @@ let Warframe = class {
      */
     get circleEarth() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/earthCycle`).then(r => r.json()).then(circle => {
+            request(`${this.endpoint}/earthCycle`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(circle => {
                 let dn = circle.isDay ? "Day" : "Night";
                 resolve({
                     state: dn.toLowerCase(),
@@ -127,7 +143,7 @@ let Warframe = class {
      */
     get voidTrader() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/voidTrader`).then(r => r.json()).then(trader => {
+            request(`${this.endpoint}/voidTrader`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(trader => {
                 let name = trader.character;
                 resolve({
                     id: trader.id,
@@ -150,7 +166,7 @@ let Warframe = class {
      */
     get events() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/events`).then(r => r.json()).then(events => {
+            request(`${this.endpoint}/events`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(events => {
                 reject(new Error("Preprecated"));
             });
         });
@@ -162,7 +178,7 @@ let Warframe = class {
      */
     get news() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/news`).then(r => r.json()).then(news => {
+            request(`${this.endpoint}/news`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(news => {
                 news = (news.map(article => {
                     let newsArt = "";
                     if (article.update) newsArt = "Update";
@@ -186,7 +202,7 @@ let Warframe = class {
 
     get syndicateMissions() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/syndicateMissions`).then(r => r.json()).then(missions => {
+            request(`${this.endpoint}/syndicateMissions`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(missions => {
                 missions = missions.map(mission => {
                     let r = {
                         id: mission.id,
@@ -220,7 +236,7 @@ let Warframe = class {
 
     get fissures() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/fissures`).then(r => r.json()).then(fissures => {
+            request(`${this.endpoint}/fissures`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(fissures => {
                 fissures = fissures.map(fissure => {
                     return {
                         id: fissure.id,
@@ -243,7 +259,7 @@ let Warframe = class {
 
     get darkSectors() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/darkSectors`).then(r => r.json()).then(sectors => {
+            request(`${this.endpoint}/darkSectors`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(sectors => {
                 resolve(sectors);
             }).catch(e => reject(e));
         });
@@ -251,7 +267,7 @@ let Warframe = class {
 
     get invasions() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/invasions`).then(r => r.json()).then(invasions => {
+            request(`${this.endpoint}/invasions`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(invasions => {
                 invasions = invasions.map(inv => {
                     inv.countdown = inv.eta;
                     inv.eta = undefined;
@@ -277,7 +293,7 @@ let Warframe = class {
 
     get dailyDeals() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/dailyDeals`).then(r => r.json()).then(deals => {
+            request(`${this.endpoint}/dailyDeals`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(deals => {
                 resolve(deals.map(deal => {
                     deal.countdown = deal.eta;
                     deal.eta = undefined;
@@ -294,12 +310,12 @@ let Warframe = class {
     }
 
     get simaris() {
-        return fetch(`${this.apiURL}/simaris`).then(r => r.json());
+        return request(`${this.endpoint}/simaris`).then(d => new Promise((r, s) => r(JSON.parse(d))));
     }
 
     get conclaveChallenges() {
         return new Promise((resolve, reject) => {
-            fetch(`${this.apiURL}/conclaveChallenges`).then(r => r.json()).then(challenges => {
+            request(`${this.endpoint}/conclaveChallenges`).then(d => new Promise((r, s) => r(JSON.parse(d)))).then(challenges => {
                 resolve(challenges.map(challenge => {
                     challenge.countdown = challenge.eta;
                     challenge.eta = undefined;

@@ -1,13 +1,13 @@
 {
   "name": "warframe.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript API Wrapper for Warframes WorldState Data",
-  "main": "app.node.js",
+  "main": "warframe.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,19 @@
   "bugs": {
     "url": "https://github.com/lucakiebel/Warframe.js/issues"
   },
-  "homepage": "https://github.com/lucakiebel/Warframe.js#readme"
+  "homepage": "https://github.com/lucakiebel/Warframe.js#readme",
+  "dependencies": {
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "jest": "^23.2.0"
+  },
+  "jest": {
+    "globals": {
+      "__DEV__": true
+    },
+    "testRegex": "./tests/.*.js$",
+    "rootDir": "."
+  }
 }
