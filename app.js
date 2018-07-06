@@ -5,8 +5,7 @@
  */
 
 /**
- * Warframe Class
- * @type {{new Warframe: {voidTrader: Promise, events: Promise, syndicateMissions, circleEarth: Promise, sorties: Promise, darkSectors, fissures, circleCetus: Promise, invasions, dailyDeals, heartbeat, news: Promise, alerts: Promise, conclaveChallenges: Promise, simaris: Promise}}}
+ * @type {{new(Object): {voidTrader: Promise, events: Promise, syndicateMissions, sorties: Promise, darkSectors, cycleEarth: Promise, fissures, invasions, dailyDeals, heartbeat: Promise, news: Promise, alerts: Promise, cycleCetus: Promise, conclaveChallenges, simaris}}}
  */
 let Warframe = class {
 
