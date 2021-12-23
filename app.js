@@ -7,7 +7,7 @@
 /**
  * @type {{new(Object): {voidTrader: Promise, events: Promise, syndicateMissions, sorties: Promise, darkSectors, cycleEarth: Promise, fissures, invasions, dailyDeals, heartbeat: Promise, news: Promise, alerts: Promise, cycleCetus: Promise, conclaveChallenges, simaris}}}
  */
-let Warframe = class {
+ let Warframe = class {
 
     /**
      *
