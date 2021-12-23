@@ -8,7 +8,7 @@ To install the Browser version simply add the JS file to your HTML by using the 
 #### CDN:
 ``<script src="https://cdn.jsdelivr.net/npm/warframe.js@1.3.2/app.min.js"></script>``
 
-#### From your Project:
+#### From your Project:s
 
 ``<script src="app.js"></script>``
 
