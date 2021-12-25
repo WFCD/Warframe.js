@@ -13,11 +13,15 @@ A JavaScript API Wrapper for Warframe's WorldState Data
 To install the Browser version simply add the JS file to your HTML by using the CDN Link or add `app.js` to your project:
 
 #### CDN:
-``<script src="https://cdn.jsdelivr.net/npm/warframe.js@1.3.3/app.min.js"></script>``
+```html
+<script src="https://cdn.jsdelivr.net/npm/warframe.js@1.3.3/warframe.min.js"></script>
+```
 
-#### From your Project:s
+#### From your Project:
 
-``<script src="app.js"></script>``
+```html
+<script src="app.js"></script>
+```
 
 #### NodeJS
 
@@ -32,7 +36,7 @@ $ npm i --save warframe.js
 
 For the NodeJS version, first `require` the module:
 
-```javascript
+```js
 const Warframe = require("warframe.js")
 ```
 
@@ -44,7 +48,7 @@ const WF = new Warframe(options);
 
 Where `options` is an Object with the following structure:
 
-```javascript
+```js
 options = {
     platform: "pc"||"ps4"||"xb1"
 }
