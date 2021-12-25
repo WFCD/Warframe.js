@@ -1,6 +1,5 @@
 # Warframe.js
 
-[![Supported by Warframe Community Developers](https://warframestat.us/wfcd.png)](https://github.com/WFCD "Supported by Warframe Community Developers")
 
 
 [![ci](https://github.com/WFCD/Warframe.js/actions/workflows/ci.yaml/badge.svg)](https://github.com/WFCD/Warframe.js/actions/workflows/ci.yaml)
