@@ -7,22 +7,22 @@
 
 A JavaScript API Wrapper for Warframe's WorldState Data
 
-# Installation
+## Installation
 
 To install the Browser version simply add the JS file to your HTML by using the CDN Link or add `app.js` to your project:
 
-#### CDN:
+### CDN:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/warframe.js@1.3.3/warframe.min.js"></script>
 ```
 
-#### From your Project:
+### From your Project
 
 ```html
 <script src="app.js"></script>
 ```
 
-#### NodeJS
+### NodeJS
 
 To install the NodeJS Version, use `npm` like so:
 
@@ -31,7 +31,7 @@ $ npm i --save warframe.js
 ```
 
 
-# Usage
+## Usage
 
 For the NodeJS version, first `require` the module:
 
@@ -76,7 +76,7 @@ Once initalized, you can use the newly created `WF` Object to access the getters
 | Warframe.prototype.voidTrader         | When and where Baro will come, and what he carries       | Promise           |
 
 
-## Examples
+### Examples
 
 #### NodeJS:
 
@@ -102,4 +102,4 @@ const WF = new Warframe(options);
 })();
 ```
 
-To see this in action head over to [tests/test.html](https://lucakiebel.github.io/Warframe.js/tests/test.html)
+To see this in action head over to [tests/test.html](https://wfcd.github.io/Warframe.js/tests/test.html)

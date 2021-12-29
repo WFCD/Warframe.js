@@ -10,7 +10,8 @@
     "test": "nyc mocha",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepublishOnly": "npm_config_yes=true npx clean-package"
+    "minify": "sh ./.github/minify.sh",
+    "prepublishOnly": "npm_config_yes=true npx clean-package && "
   },
   "repository": {
     "type": "git",

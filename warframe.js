@@ -13,7 +13,7 @@ const BASE = 'https://api.warframestat.us';
  *
  * Docs and more: https://github.com/WFCD/Warframe.js
  */
-module.exports = class Warframe {
+class Warframe {
   /**
    * Construct a worldstate with specified default platform
    * @param {string<'pc'|'ps4'|'xb1'|'swi'>} [platform] optional platform param
@@ -133,4 +133,6 @@ module.exports = class Warframe {
   get conclaveChallenges() {
     return this.get('conclaveChallenges');
   }
-};
+}
+
+module.exports = Warframe;
