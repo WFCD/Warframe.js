@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "minify": "sh ./.github/minify.sh",
-    "prepublishOnly": "npm_config_yes=true npx clean-package && "
+    "prepublishOnly": "npm_config_yes=true npx clean-package && npm run minify"
   },
   "repository": {
     "type": "git",
