@@ -13,17 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          persist-credentials: false
           node-version: '14'
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          token: ${{ secrets.GH_TOKEN }}
       - run: npm ci
       - run: npm run lint
       - run: npm test
       - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2.6.0
+        uses: cycjimmy/semantic-release-action@v2.7.0
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -32,5 +33,5 @@ jobs:
           branches: |
             ['master']
           extra_plugins: |
-            @semantic-release/changelog
             @semantic-release/git
+            @semantic-release/changelog
