@@ -59,9 +59,6 @@
     ],
     "skip-full": true
   },
-  "release": {
-    "branch": "master"
-  },
   "engines": {
     "node": ">=8.17.0"
   },
@@ -118,5 +115,32 @@
       "clean-package",
       "nyc"
     ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/changelog",
+        {
+          "assets": [
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md",
+            "app.min.js"
+          ]
+        }
+      ]
+    ],
+    "branches": "master"
   }
 }
