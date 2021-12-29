@@ -2,8 +2,6 @@
 
 const fetch = require('node-fetch');
 
-const BASE = 'https://api.warframestat.us';
-
 /**
  * Warframe Class
  *
@@ -21,6 +19,7 @@ class Warframe {
    */
   constructor({ platform = 'pc' } = { platform: 'pc' }) {
     this.system = platform || 'pc';
+    this.BASE = 'https://api.warframestat.us';
   }
 
   /**
@@ -31,7 +30,7 @@ class Warframe {
    * @returns {Promise}
    */
   get(endpoint, { map, skipPlatform = false } = { skipPlatform: false }) {
-    return new Promise((resolve, reject) => fetch(`${BASE}/${skipPlatform ? '' : `${this.system}/`}${endpoint}`)
+    return new Promise((resolve, reject) => fetch(`${this.BASE}/${skipPlatform ? '' : `${this.system}/`}${endpoint}`)
       .then((d) => d.json())
       .then((data) => (Array.isArray(data) && map ? data.map(map) : data))
       .then((data) => resolve(data))
