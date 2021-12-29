@@ -7,13 +7,15 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles",
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint:fix": "eslint --ignore-path .gitignore . --fix"
+    "test": "nyc mocha",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "minify": "sh ./.github/minify.sh",
+    "prepublishOnly": "npm_config_yes=true npx clean-package && npm run minify"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucakiebel/Warframe.js.git"
+    "url": "git+https://github.com/WFCD/Warframe.js.git"
   },
   "keywords": [
     "Warframe",
@@ -30,44 +32,44 @@
   },
   "homepage": "https://github.com/WFCD/Warframe.js#readme",
   "dependencies": {
-    "request": "^2.87.0",
-    "request-promise": "^4.2.2"
+    "node-fetch": "^2.6.6"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "coveralls": "^3.1.1",
     "eslint": "^8.5.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-no-null": "^1.0.2",
-    "i": "^0.3.7",
-    "jest": "^23.2.0",
-    "npm": "^8.3.0"
+    "mocha": "^9.1.3",
+    "nyc": "^15.1.0"
   },
-  "jest": {
-    "globals": {
-      "__DEV__": true
-    },
-    "testRegex": "./tests/.*.js$",
-    "rootDir": ".",
-    "coverageReporters": [
+  "mocha": {
+    "exit": true,
+    "spec": "test/**/*.spec.js",
+    "timeout": 10000
+  },
+  "nyc": {
+    "exclude": [
+      "test/**"
+    ],
+    "reporter": [
       "lcov",
-      [
-        "text",
-        { "skipFull":  true }
-      ]
-    ]
-  },
-  "release": {
-    "branch": "master"
+      "text"
+    ],
+    "skip-full": true
   },
   "engines": {
     "node": ">=8.17.0"
   },
-  "eslintIgnore": [ "./app.min.js" ],
+  "eslintIgnore": [
+    "app.*"
+  ],
   "eslintConfig": {
     "extends": "airbnb-base",
     "parserOptions": {
-      "sourceType": "script"
+      "sourceType": "script",
+      "ecmaVersion": "latest"
     },
     "rules": {
       "valid-jsdoc": [
@@ -98,7 +100,47 @@
         "off"
       ],
       "no-await-in-loop": "off",
-      "import/no-unresolved": 0
+      "import/no-unresolved": 0,
+      "class-methods-use-this": "off",
+      "no-promise-executor-return": "off"
     }
+  },
+  "clean-package": {
+    "remove": [
+      "mocha",
+      "devDependencies",
+      "eslintIgnore",
+      "eslintConfig",
+      "scripts",
+      "clean-package",
+      "nyc"
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/changelog",
+        {
+          "assets": [
+            "CHANGELOG.md"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md",
+            "app.min.js"
+          ]
+        }
+      ]
+    ],
+    "branches": "master"
   }
 }

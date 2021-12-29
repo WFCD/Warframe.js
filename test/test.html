@@ -19,10 +19,10 @@
         <option value="simaris">Simaris</option>
         <option value="conclaveChallenges">Conclave Challenges</option>
     </select>
-    <div id="test">
+    <pre id="test">
 
-    </div>
-    <script src="https://git.sk-cdn.net/lucakiebel/Warframe.js/master/app.js?v=1.2.3"></script>
+    </pre>
+     <script src="https://cdn.jsdelivr.net/gh/wfcd/Warframe.js@master/app.min.js"></script>
     <script>
         document.querySelector("#caseSelect").addEventListener("change", changeCase);
 
@@ -36,7 +36,7 @@
 
         function changeCase(e) {
             let value = e.target.value;
-            !!value && WF[value].then(d => {console.log(d); document.querySelector("#test").innerText = JSON.stringify(d)});
+            !!value && WF[value].then(d => {console.log(d); document.querySelector("#test").innerText = JSON.stringify(d, null, 2)});
         }
 
         function getParameterByName(name, url) {
