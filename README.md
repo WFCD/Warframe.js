@@ -100,7 +100,7 @@ let options = {platform: "pc"};
 const WF = new Warframe(options);
 
 (async function(){
-    let alerts = await WF.alerts();
+    let alerts = await WF.alerts;
     console.log(alerts);
 })();
 ```
