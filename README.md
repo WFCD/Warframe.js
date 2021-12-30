@@ -4,7 +4,7 @@
 [![ci](https://github.com/WFCD/Warframe.js/actions/workflows/ci.yaml/badge.svg)](https://github.com/WFCD/Warframe.js/actions/workflows/ci.yaml)
 [![Release](https://github.com/WFCD/Warframe.js/actions/workflows/release.yaml/badge.svg)](https://github.com/WFCD/Warframe.js/actions/workflows/release.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/WFCD/Warframe.js/badge.svg?branch=linting-tooling)](https://coveralls.io/github/WFCD/Warframe.js?branch=linting-tooling)
-
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 A JavaScript API Wrapper for Warframe's WorldState Data
 
