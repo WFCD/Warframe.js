@@ -30,7 +30,7 @@ describe('Warframe API Client', () => {
     const heartbeat = await new Warframe({ platform: 'pc' }).heartbeat;
     should.exist(heartbeat);
     heartbeat.should.be.an('object')
-      .and.to.include({ msg: 'Success', code: 200 });
+      .and.to.include({ message: 'Success', code: 200 });
   });
   describe('platform', () => {
     it('should be settable', () => {
