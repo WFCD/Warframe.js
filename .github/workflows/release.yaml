@@ -10,6 +10,11 @@ jobs:
     strategy:
       matrix:
         node-version: [15.x]
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
     steps:
       - uses: actions/checkout@v2
         with:
