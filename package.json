@@ -13,10 +13,7 @@
     "minify": "sh ./.github/minify.sh",
     "prepublishOnly": "npm_config_yes=true npx clean-package && npm run minify"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WFCD/Warframe.js.git"
-  },
+  "repository": "https://github.com/WFCD/Warframe.js",
   "keywords": [
     "Warframe",
     "API",
@@ -142,5 +139,6 @@
       ]
     ],
     "branches": "master"
-  }
+  },
+  "publishConfig": { "provenance": true }
 }
