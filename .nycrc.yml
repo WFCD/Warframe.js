@@ -1,6 +1,6 @@
 exclude:
   - 'test/**'
 reporter:
- - lcov
- - text
+  - lcov
+  - text
 skip-full: true
