@@ -21,6 +21,8 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - run: npm ci
       - run: npm run lint
+      - name: Validate with commitlint
+        run: npx commitlint --last --verbose
       - run: npm test
       - name: Semantic Release
         run: npx semantic-release
