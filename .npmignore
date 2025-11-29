@@ -8,3 +8,12 @@ app.*
 # Coverage directory used by tools like istanbul
 coverage/
 .nyc_output/
+
+# Configuration files
+.nycrc.yml
+.eslintignore
+.eslintrc.yml
+.mocharc.yml
+.releaserc.yml
+.lintstagedrc.yml
+.commitlintrc.mjs
