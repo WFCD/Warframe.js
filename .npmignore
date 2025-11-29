@@ -17,3 +17,5 @@ coverage/
 .releaserc.yml
 .lintstagedrc.yml
 .commitlintrc.mjs
+.husky/
+.idea/
