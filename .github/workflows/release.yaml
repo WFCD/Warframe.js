@@ -18,12 +18,16 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-          token: ${{ secrets.GH_TOKEN }}
       - run: npm ci
       - run: npm run lint
       - name: Validate with commitlint
         run: npx commitlint --last --verbose
       - run: npm test
+      - name: Coveralls
+        if: github.repository == 'WFCD/Warframe.js'
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
       - name: Semantic Release
         run: npx semantic-release
         env:
